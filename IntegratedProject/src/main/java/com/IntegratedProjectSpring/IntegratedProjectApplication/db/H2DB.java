@@ -1,4 +1,4 @@
-package com.IntegratedProjectSpring.IntegratedProject.db;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

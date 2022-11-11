@@ -1,14 +1,14 @@
-package com.IntegratedProjectSpring.IntegratedProject;
+package com.IntegratedProjectSpring.IntegratedProjectApplication;
 
-import com.IntegratedProjectSpring.IntegratedProject.db.H2DB;
-import com.IntegratedProjectSpring.IntegratedProject.daos.DentistDaoH2;
-import com.IntegratedProjectSpring.IntegratedProject.daos.PatientDaoH2;
-import com.IntegratedProjectSpring.IntegratedProject.entity.Dentist;
-import com.IntegratedProjectSpring.IntegratedProject.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.db.H2DB;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.DentistDaoH2;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.PatientDaoH2;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.IntegratedProjectSpring.IntegratedProject.services.DentistService;
-import com.IntegratedProjectSpring.IntegratedProject.services.PatientService;
 
 import java.sql.Date;
 import java.sql.SQLException;

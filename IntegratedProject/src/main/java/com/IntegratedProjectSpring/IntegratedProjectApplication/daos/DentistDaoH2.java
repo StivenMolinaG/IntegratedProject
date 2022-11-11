@@ -1,8 +1,8 @@
-package com.IntegratedProjectSpring.IntegratedProject.daos;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.daos;
 
-import com.IntegratedProjectSpring.IntegratedProject.db.H2DB;
-import com.IntegratedProjectSpring.IntegratedProject.entity.Dentist;
-import com.IntegratedProjectSpring.IntegratedProject.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.db.H2DB;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DentistDaoH2 implements IDao<Dentist>{
@@ -60,8 +61,23 @@ public class DentistDaoH2 implements IDao<Dentist>{
     }
 
     @Override
-    public List<Dentist> searchAll() {
-        return null;
+    public List<Dentist> searchAll() throws SQLException {
+        List<Dentist> dentistList = new ArrayList<Dentist>();
+        PreparedStatement preparedStatement;
+        Dentist dentist = new Dentist();
+        preparedStatement = conn.prepareStatement("SELECT * FROM DENTIST");
+        ResultSet result = preparedStatement.executeQuery();
+        while (result.next()) {
+            dentist.setId(result.getInt(1));
+            dentist.setName(result.getString(2));
+            dentist.setLastName(result.getString(3));
+            dentist.setEnrollment(result.getString(4));
+
+            dentistList.add(dentist);
+        }
+        preparedStatement.close();
+        conn.close();
+        return dentistList;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.IntegratedProjectSpring.IntegratedProject.entity;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.entity;
 
 public class Dentist {
 
@@ -6,6 +6,7 @@ public class Dentist {
     private String name;
     private String lastName;
     private String enrollment;
+
 
     public Dentist() {
     }

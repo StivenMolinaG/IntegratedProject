@@ -1,4 +1,4 @@
-package com.IntegratedProjectSpring.IntegratedProject.daos;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.daos;
 
 import java.sql.SQLException;
 import java.util.List;

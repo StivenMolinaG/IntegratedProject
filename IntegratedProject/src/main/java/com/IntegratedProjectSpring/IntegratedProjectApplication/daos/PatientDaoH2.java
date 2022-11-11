@@ -1,13 +1,14 @@
-package com.IntegratedProjectSpring.IntegratedProject.daos;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.daos;
 
-import com.IntegratedProjectSpring.IntegratedProject.db.H2DB;
-import com.IntegratedProjectSpring.IntegratedProject.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.db.H2DB;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,8 +61,24 @@ public class PatientDaoH2 implements IDao<Patient>{
     }
 
     @Override
-    public List<Patient> searchAll(){
-        return null;
+    public List<Patient> searchAll() throws SQLException {
+        List<Patient> patients = new ArrayList<Patient>();
+        PreparedStatement preparedStatement;
+        Patient patient = new Patient();
+        preparedStatement = conn.prepareStatement("SELECT * FROM PATIENT");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            patient.setDNI(resultSet.getString(5));
+            patient.setName(resultSet.getString(2));
+            patient.setLastName(resultSet.getString(3));
+            patient.setAddress(resultSet.getString(4));
+            patient.setDateOut(resultSet.getDate(6));
+
+            patients.add(patient);
+        }
+        preparedStatement.close();
+        conn.close();
+        return patients;
     }
 
     @Override

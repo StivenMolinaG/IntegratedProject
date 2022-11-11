@@ -1,5 +1,4 @@
-package com.IntegratedProjectSpring.IntegratedProject.entity;
-
+package com.IntegratedProjectSpring.IntegratedProjectApplication.entity;
 import java.sql.Date;
 
 public class Patient {
