@@ -1,8 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.daos;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.db.H2DB;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Dentist;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

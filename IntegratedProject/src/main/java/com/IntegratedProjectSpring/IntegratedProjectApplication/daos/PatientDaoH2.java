@@ -1,7 +1,8 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.daos;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.db.H2DB;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.util.Util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
@@ -10,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class PatientDaoH2 implements IDao<Patient>{
     private final static Logger LOGGER = LogManager.getLogger();
@@ -21,12 +21,13 @@ public class PatientDaoH2 implements IDao<Patient>{
         PreparedStatement preparedStatement;
         try{
             conn.setAutoCommit(false);
-            preparedStatement = conn.prepareStatement("INSERT INTO PATIENT (name, lastName, address, DNI, dateOut) VALUES (?,?,?,?,?)");
-            preparedStatement.setString(1,patient.getName());
-            preparedStatement.setString(2, patient.getLastName());
-            preparedStatement.setString(3, patient.getAddress());
-            preparedStatement.setString(4, patient.getDNI());
-            preparedStatement.setDate(5, patient.getDateOut());
+            preparedStatement = conn.prepareStatement("INSERT INTO PATIENT (id, name, lastName, address, DNI, dateOut) VALUES (?,?,?,?,?,?)");
+            preparedStatement.setInt(1,patient.getId());
+            preparedStatement.setString(2,patient.getName());
+            preparedStatement.setString(3, patient.getLastName());
+            preparedStatement.setString(4, patient.getAddress());
+            preparedStatement.setString(5, patient.getDNI());
+            preparedStatement.setDate(6, Util.utilDateToSqlDate(patient.getDateOut()));
 
             preparedStatement.executeUpdate();
             conn.commit();
@@ -49,10 +50,11 @@ public class PatientDaoH2 implements IDao<Patient>{
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            patient.setDNI(resultSet.getString(5));
+            patient.setId(resultSet.getInt(1));
             patient.setName(resultSet.getString(2));
             patient.setLastName(resultSet.getString(3));
             patient.setAddress(resultSet.getString(4));
+            patient.setDNI(resultSet.getString(5));
             patient.setDateOut(resultSet.getDate(6));
         }
         preparedStatement.close();
@@ -68,10 +70,11 @@ public class PatientDaoH2 implements IDao<Patient>{
         preparedStatement = conn.prepareStatement("SELECT * FROM PATIENT");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            patient.setDNI(resultSet.getString(5));
+            patient.setId(resultSet.getInt(1));
             patient.setName(resultSet.getString(2));
             patient.setLastName(resultSet.getString(3));
             patient.setAddress(resultSet.getString(4));
+            patient.setDNI(resultSet.getString(5));
             patient.setDateOut(resultSet.getDate(6));
 
             patients.add(patient);

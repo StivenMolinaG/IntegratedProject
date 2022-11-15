@@ -1,11 +1,9 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.DentistDaoH2;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +15,17 @@ public class DentistController {
 
     public DentistController(DentistService dentistService) {
         this.dentistService = dentistService;
+    }
+
+    @GetMapping()
+    public String welcome(){
+        return "Welcome to Dentist!";
+    }
+
+    @PostMapping("/create")
+    public Dentist createPatient(@RequestBody Dentist dentist) throws SQLException {
+        dentistService.setDentistDao(new DentistDaoH2());
+        return dentistService.create(dentist);
     }
 
     @GetMapping("/search")

@@ -1,8 +1,9 @@
-package com.IntegratedProjectSpring.IntegratedProjectApplication.entity;
-import java.sql.Date;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
+import java.util.Date;
 
 public class Patient {
 
+    private int id;
     private String name;
     private String lastName;
     private String address;
@@ -12,12 +13,21 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String name, String lastName, String address, String DNI, Date dateOut) {
+    public Patient(int id, String name, String lastName, String address, String DNI, Date dateOut) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
         this.DNI = DNI;
         this.dateOut = dateOut;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -60,14 +70,15 @@ public class Patient {
         this.dateOut = dateOut;
     }
 
-    @Override
-    public String toString() {
-        return "Paciente{" +
-                "nombre='" + name + '\'' +
-                ", apellido='" + lastName + '\'' +
-                ", domicilio='" + address + '\'' +
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Patient{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
                 ", DNI='" + DNI + '\'' +
-                ", fechaAlta=" + dateOut +
+                ", dateOut=" + dateOut +
                 '}';
     }
 }

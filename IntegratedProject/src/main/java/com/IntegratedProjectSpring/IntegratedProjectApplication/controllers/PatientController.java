@@ -1,7 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.PatientDaoH2;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +19,10 @@ public class PatientController {
         this.patientService = patientService;
     }
 
+    @GetMapping()
+    public String welcome(){
+        return "welcome to patient!";
+    }
     @GetMapping("/search")
     public Patient searchPatientHandler(int id) throws SQLException {
         patientService.setPatientDao(new PatientDaoH2());

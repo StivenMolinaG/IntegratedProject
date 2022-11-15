@@ -1,4 +1,4 @@
-package com.IntegratedProjectSpring.IntegratedProjectApplication.entity;
+package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
 
 public class Dentist {
 
@@ -52,11 +52,11 @@ public class Dentist {
 
     @Override
     public String toString() {
-        return "Odontologo{" +
-                "id=" + id +
-                ", nombre='" + name + '\'' +
-                ", apellido='" + lastName + '\'' +
-                ", matricula='" + enrollment + '\'' +
+        return "Dentist{" +
+                "id= " + id +
+                ", name= '" + name + '\'' +
+                ", lastName= '" + lastName + '\'' +
+                ", enrollment= '" + enrollment + '\'' +
                 '}';
     }
 }

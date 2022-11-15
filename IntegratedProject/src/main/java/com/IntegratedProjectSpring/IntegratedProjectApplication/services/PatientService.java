@@ -1,7 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.IDao;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.entity.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
