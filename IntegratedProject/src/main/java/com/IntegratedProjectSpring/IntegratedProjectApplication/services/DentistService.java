@@ -25,4 +25,7 @@ public class DentistService {
     public List<Dentist> searchAll() throws SQLException {
         return this.dentistDao.searchAll();
     }
+    public Dentist update(Dentist dentist) throws SQLException {
+        return this.dentistDao.update(dentist);
+    }
 }

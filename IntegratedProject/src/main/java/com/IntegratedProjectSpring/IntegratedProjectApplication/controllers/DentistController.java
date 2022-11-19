@@ -38,4 +38,9 @@ public class DentistController {
         dentistService.setDentistDao(new DentistDaoH2());
         return dentistService.searchAll();
     }
+    @PostMapping("/update")
+    public Dentist updateDentistHandler(@RequestBody Dentist dentist) throws SQLException {
+        dentistService.setDentistDao(new DentistDaoH2());
+        return dentistService.update(dentist);
+    }
 }

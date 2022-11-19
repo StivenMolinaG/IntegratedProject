@@ -6,14 +6,14 @@ public class Patient {
     private int id;
     private String name;
     private String lastName;
-    private String address;
+    private Address address;
     private String DNI;
     private Date dateOut;
 
     public Patient() {
     }
 
-    public Patient(int id, String name, String lastName, String address, String DNI, Date dateOut) {
+    public Patient(int id, String name, String lastName, Address address, String DNI, Date dateOut) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -46,11 +46,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class H2DB {
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS DENTIST (id INT PRIMARY KEY, name VARCHAR(255), lastName VARCHAR(255), enrollment VARCHAR(255))";
     private static final String CREATE_TABLE_PACIENTE = "CREATE TABLE IF NOT EXISTS PATIENT (id INT PRIMARY KEY, name VARCHAR(255), lastName VARCHAR(255), " +
-            "address VARCHAR(255)," +
+            "address int," +
             "DNI varchar(255)," +
             "dateOut Date)";
     private static final String JDBC_DRIVER = "org.h2.Driver";
