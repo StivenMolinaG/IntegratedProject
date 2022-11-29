@@ -1,33 +1,44 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "patient")
 public class Patient {
 
-    private int id;
+    @Id
+    @Column(name = "dni_patient")
+    private long DNI;
     private String name;
     private String lastName;
-    private Address address;
-    private String DNI;
+    private Integer address;
     private Date dateOut;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dentist_id")
+    private Dentist dentist;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    private Address addressReference;
 
     public Patient() {
     }
 
-    public Patient(int id, String name, String lastName, Address address, String DNI, Date dateOut) {
-        this.id = id;
+    public Patient(long DNI, String name, String lastName, Integer address, Date dateOut) {
+        this.DNI = DNI;
         this.name = name;
         this.lastName = lastName;
         this.address = address;
-        this.DNI = DNI;
         this.dateOut = dateOut;
     }
 
-    public int getId() {
-        return id;
+    public long getDNI() {
+        return DNI;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDNI(long DNI) {
+        this.DNI = DNI;
     }
 
     public String getName() {
@@ -46,20 +57,12 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
+    public Integer getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(Integer address) {
         this.address = address;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
     }
 
     public Date getDateOut() {
@@ -70,14 +73,14 @@ public class Patient {
         this.dateOut = dateOut;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+
+    @Override
+    public String toString() {
         return "Patient{" +
-                "id=" + id +
+                "DNI=" + DNI +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", DNI='" + DNI + '\'' +
+                ", address=" + address +
                 ", dateOut=" + dateOut +
                 '}';
     }

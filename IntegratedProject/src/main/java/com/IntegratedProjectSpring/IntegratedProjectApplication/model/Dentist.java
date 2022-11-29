@@ -1,28 +1,38 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "dentist")
 public class Dentist {
 
-    private int id;
+    @Id
+    @Column(name = "id_dentist")
+    private Integer id;
     private String name;
     private String lastName;
     private String enrollment;
 
 
+    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
+    private Set<Patient> patientList = new HashSet<>();
     public Dentist() {
     }
 
-    public Dentist(int id, String name, String lastName, String enrollment) {
+    public Dentist(Integer id, String name, String lastName, String enrollment) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.enrollment = enrollment;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

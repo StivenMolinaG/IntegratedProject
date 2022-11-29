@@ -1,31 +1,16 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services;
 
-import com.IntegratedProjectSpring.IntegratedProjectApplication.daos.IDao;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class DentistService {
-    private IDao<Dentist> dentistDao;
+public interface DentistService {
 
-    public void setDentistDao(IDao<Dentist> dentistDao) {
-        this.dentistDao = dentistDao;
-    }
+    Dentist create(Dentist dentist);
 
-    public Dentist create(Dentist dentist) throws SQLException {
-        return this.dentistDao.create(dentist);
-    }
-
-    public Dentist search(int id) throws SQLException {
-        return this.dentistDao.search(id);
-    }
-    public List<Dentist> searchAll() throws SQLException {
-        return this.dentistDao.searchAll();
-    }
-    public Dentist update(Dentist dentist) throws SQLException {
-        return this.dentistDao.update(dentist);
-    }
+    Dentist search(int id);
+    List<Dentist> searchAll();
+    Dentist update(Dentist dentist);
 }

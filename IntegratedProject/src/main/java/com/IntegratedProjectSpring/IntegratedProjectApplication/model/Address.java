@@ -1,13 +1,22 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "address")
 public class Address {
 
+    @Id
+    @Column(name = "adress_id")
     private Integer id;
     private String street;
     private String number;
     private String location;
     private String province;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", referencedColumnName = "address")
+    private Patient patient;
     public Address() {
     }
 
