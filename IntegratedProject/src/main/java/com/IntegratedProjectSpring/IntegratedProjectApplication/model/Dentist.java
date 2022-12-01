@@ -15,17 +15,19 @@ public class Dentist {
     private String lastName;
     private String enrollment;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_turn")
+    private Set<Turn> turnList = new HashSet<>();
 
-    @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
-    private Set<Patient> patientList = new HashSet<>();
     public Dentist() {
     }
 
-    public Dentist(Integer id, String name, String lastName, String enrollment) {
+    public Dentist(Integer id, String name, String lastName, String enrollment, Set<Turn> turnList) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.enrollment = enrollment;
+        this.turnList = turnList;
     }
 
     public Integer getId() {
@@ -60,13 +62,11 @@ public class Dentist {
         this.enrollment = enrollment;
     }
 
-    @Override
-    public String toString() {
-        return "Dentist{" +
-                "id= " + id +
-                ", name= '" + name + '\'' +
-                ", lastName= '" + lastName + '\'' +
-                ", enrollment= '" + enrollment + '\'' +
-                '}';
+    public Set<Turn> getTurnList() {
+        return turnList;
+    }
+
+    public void setTurnList(Set<Turn> turnList) {
+        this.turnList = turnList;
     }
 }

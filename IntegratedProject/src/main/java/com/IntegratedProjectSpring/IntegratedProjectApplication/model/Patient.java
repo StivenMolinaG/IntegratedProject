@@ -1,6 +1,8 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "patient")
@@ -11,12 +13,11 @@ public class Patient {
     private long DNI;
     private String name;
     private String lastName;
-    private Integer address;
     private Date dateOut;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dentist_id")
-    private Dentist dentist;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_turn")
+    private Set<Turn> turnList = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
@@ -25,12 +26,13 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(long DNI, String name, String lastName, Integer address, Date dateOut) {
+    public Patient(long DNI, String name, String lastName, Date dateOut, Set<Turn> turnList, Address addressReference) {
         this.DNI = DNI;
         this.name = name;
         this.lastName = lastName;
-        this.address = address;
         this.dateOut = dateOut;
+        this.turnList = turnList;
+        this.addressReference = addressReference;
     }
 
     public long getDNI() {
@@ -57,14 +59,6 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Integer getAddress() {
-        return address;
-    }
-
-    public void setAddress(Integer address) {
-        this.address = address;
-    }
-
     public Date getDateOut() {
         return dateOut;
     }
@@ -73,15 +67,19 @@ public class Patient {
         this.dateOut = dateOut;
     }
 
+    public Set<Turn> getTurnList() {
+        return turnList;
+    }
 
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "DNI=" + DNI +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address=" + address +
-                ", dateOut=" + dateOut +
-                '}';
+    public void setTurnList(Set<Turn> turnList) {
+        this.turnList = turnList;
+    }
+
+    public Address getAddressReference() {
+        return addressReference;
+    }
+
+    public void setAddressReference(Address addressReference) {
+        this.addressReference = addressReference;
     }
 }

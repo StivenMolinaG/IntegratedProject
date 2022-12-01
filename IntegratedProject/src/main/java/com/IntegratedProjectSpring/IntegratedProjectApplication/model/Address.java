@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @Column(name = "adress_id")
+    @Column(name = "address_id")
     private Integer id;
     private String street;
     private String number;
@@ -15,7 +15,7 @@ public class Address {
     private String province;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id", referencedColumnName = "address")
+    @JoinColumn(name = "address_reference", referencedColumnName = "address_id")
     private Patient patient;
     public Address() {
     }

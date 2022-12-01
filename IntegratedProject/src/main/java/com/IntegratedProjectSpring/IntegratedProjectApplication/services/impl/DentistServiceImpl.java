@@ -1,16 +1,23 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.DentistRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class DentistServiceImpl implements DentistService {
+
+    @Autowired
+    private DentistRepository dentistRepository;
+
     @Override
     public Dentist create(Dentist dentist) {
-        return null;
+        dentistRepository.save(dentist);
+        return dentist;
     }
 
     @Override
