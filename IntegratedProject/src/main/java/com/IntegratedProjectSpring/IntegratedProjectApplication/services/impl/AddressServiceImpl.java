@@ -2,6 +2,7 @@ package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private PatientRepository patientRepository;
 
     @Override
     public Address create(Address address) {

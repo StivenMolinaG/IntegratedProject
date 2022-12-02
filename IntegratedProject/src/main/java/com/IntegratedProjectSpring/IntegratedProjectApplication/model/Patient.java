@@ -19,8 +19,7 @@ public class Patient {
     @JoinColumn(name = "id_turn")
     private Set<Turn> turnList = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    @OneToOne(mappedBy = "patient")
     private Address addressReference;
 
     public Patient() {

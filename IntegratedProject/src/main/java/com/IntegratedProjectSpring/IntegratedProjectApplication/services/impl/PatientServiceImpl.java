@@ -7,6 +7,7 @@ import com.IntegratedProjectSpring.IntegratedProjectApplication.services.Patient
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,9 +16,13 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     @Override
     public Patient create(Patient patient) {
-
+        patient.setDateOut(new Date());
+        System.out.println("Address" + patient.getAddressReference());
         patientRepository.save(patient);
         return patient;
     }
@@ -30,10 +35,6 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> searchAll() {
         return null;
-    }
-
-    private Patient createObjectPatient(Patient patient) {
-        return new Patient();
     }
 
 }

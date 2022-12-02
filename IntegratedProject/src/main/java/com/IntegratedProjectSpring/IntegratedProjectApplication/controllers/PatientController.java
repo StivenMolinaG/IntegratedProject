@@ -1,6 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.services.AddressService;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

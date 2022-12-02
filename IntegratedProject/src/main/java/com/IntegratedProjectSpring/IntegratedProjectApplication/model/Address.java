@@ -15,17 +15,18 @@ public class Address {
     private String province;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "address_id")
+    @JoinColumn(referencedColumnName = "dni_patient")
     private Patient patient;
     public Address() {
     }
 
-    public Address(Integer id, String street, String number, String location, String province) {
+    public Address(Integer id, String street, String number, String location, String province, Patient patient) {
         this.id = id;
         this.street = street;
         this.number = number;
         this.location = location;
         this.province = province;
+        this.patient = patient;
     }
 
     public Integer getId() {
@@ -68,14 +69,11 @@ public class Address {
         this.province = province;
     }
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", location='" + location + '\'' +
-                ", province='" + province + '\'' +
-                '}';
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }
