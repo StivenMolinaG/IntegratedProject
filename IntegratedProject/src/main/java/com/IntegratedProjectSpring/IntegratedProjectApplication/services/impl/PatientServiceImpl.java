@@ -1,6 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient create(Patient patient) {
+
         patientRepository.save(patient);
         return patient;
     }
@@ -28,6 +30,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> searchAll() {
         return null;
+    }
+
+    private Patient createObjectPatient(Patient patient) {
+        return new Patient();
     }
 
 }

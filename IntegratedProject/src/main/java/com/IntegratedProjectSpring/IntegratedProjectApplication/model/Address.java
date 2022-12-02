@@ -15,7 +15,7 @@ public class Address {
     private String province;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address_reference", referencedColumnName = "address_id")
+    @JoinColumn(referencedColumnName = "address_id")
     private Patient patient;
     public Address() {
     }

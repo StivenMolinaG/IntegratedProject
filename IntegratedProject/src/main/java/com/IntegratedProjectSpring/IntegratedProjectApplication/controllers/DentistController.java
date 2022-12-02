@@ -21,8 +21,8 @@ public class DentistController {
     }
 
     @PostMapping("/create")
-    public Dentist createPatient(@RequestBody Dentist dentist){
-        return null;
+    public Dentist createDentistHandler(@RequestBody Dentist dentist){
+        return dentist;
     }
 
     @GetMapping("/search")
