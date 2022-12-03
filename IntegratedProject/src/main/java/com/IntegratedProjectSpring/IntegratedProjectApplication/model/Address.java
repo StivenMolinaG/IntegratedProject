@@ -7,16 +7,16 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @Column(name = "address_id")
     private Integer id;
     private String street;
     private String number;
     private String location;
     private String province;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "dni_patient")
+    // TODO: revisar diferencias en el mappeo
+    @OneToOne(mappedBy = "addressReference")
     private Patient patient;
+
     public Address() {
     }
 

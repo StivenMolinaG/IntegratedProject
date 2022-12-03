@@ -8,29 +8,36 @@ import java.util.Set;
 @Table(name = "patient")
 public class Patient {
 
+    // TODO: con respecto al id de la tabla, para este trabajo de ejercicio,
+    //  te conviene hacer el campo id  autoincremental para la tabla y luego usar el dni
+    // como campo de búsqueda si querés. Podrías usar el dni como id, pero requeire de otra estrategia
+    // que no vamos a ver
     @Id
+    private int id;
     @Column(name = "dni_patient")
     private long DNI;
     private String name;
     private String lastName;
-    private Date dateOut;
+    //private Date dateOut;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  /*  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_turn")
-    private Set<Turn> turnList = new HashSet<>();
+    private Set<Turn> turnList = new HashSet<>();*/
 
-    @OneToOne(mappedBy = "patient")
+    // TODO: revisar diferencias en el mappeo
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address addressReference;
 
     public Patient() {
     }
 
-    public Patient(long DNI, String name, String lastName, Date dateOut, Set<Turn> turnList, Address addressReference) {
+    public Patient(long DNI, String name, String lastName, Address addressReference) {
         this.DNI = DNI;
         this.name = name;
         this.lastName = lastName;
-        this.dateOut = dateOut;
-        this.turnList = turnList;
+        //this.dateOut = dateOut;
+        //this.turnList = turnList;
         this.addressReference = addressReference;
     }
 
@@ -58,21 +65,21 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Date getDateOut() {
+    /*public Date getDateOut() {
         return dateOut;
     }
 
     public void setDateOut(Date dateOut) {
         this.dateOut = dateOut;
-    }
+    }*/
 
-    public Set<Turn> getTurnList() {
+    /*public Set<Turn> getTurnList() {
         return turnList;
     }
 
     public void setTurnList(Set<Turn> turnList) {
         this.turnList = turnList;
-    }
+    }*/
 
     public Address getAddressReference() {
         return addressReference;

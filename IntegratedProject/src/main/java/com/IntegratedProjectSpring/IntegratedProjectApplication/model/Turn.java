@@ -14,9 +14,9 @@ public class Turn {
     private Integer id;
     private Date dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   /* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "dni_patient")
-    private Patient patient;
+    private Patient patient;*/
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_dentist")
@@ -25,10 +25,10 @@ public class Turn {
     public Turn() {
     }
 
-    public Turn(Integer id, Date dateTime, Patient patient, Dentist dentist) {
+    public Turn(Integer id, Date dateTime, Dentist dentist) {
         this.id = id;
         this.dateTime = dateTime;
-        this.patient = patient;
+        //this.patient = patient;
         this.dentist = dentist;
     }
 
@@ -48,13 +48,13 @@ public class Turn {
         this.dateTime = dateTime;
     }
 
-    public Patient getPatientList() {
+    /*public Patient getPatientList() {
         return patient;
     }
 
     public void setPatientList(Patient patient) {
         this.patient = patient;
-    }
+    }*/
 
     public Dentist getDentistList() {
         return dentist;

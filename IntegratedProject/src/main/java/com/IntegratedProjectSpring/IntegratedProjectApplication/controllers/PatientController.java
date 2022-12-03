@@ -19,10 +19,13 @@ public class PatientController {
     public String welcome(){
         return "welcome to patient!";
     }
+
     @PostMapping("/create")
     public Patient createPatientHandler(@RequestBody Patient patient){
+        // TODO: Tener presente que este patient viene con la data que le pasamos al body
+        // en la request de Postman, por ende, el patient viene con la data de Address en su interior
         patientService.create(patient);
-       return patient;
+        return patient;
     }
     @GetMapping("/search")
     public Patient searchPatientHandler(int id) {
