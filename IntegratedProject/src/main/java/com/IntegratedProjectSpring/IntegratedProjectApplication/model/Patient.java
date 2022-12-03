@@ -10,7 +10,7 @@ public class Patient {
 
     @Id
     @Column(name = "dni_patient")
-    private long DNI;
+    private Long DNI;
     private String name;
     private String lastName;
     private Date dateOut;
@@ -25,7 +25,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(long DNI, String name, String lastName, Date dateOut, Set<Turn> turnList, Address addressReference) {
+    public Patient(Long DNI, String name, String lastName, Date dateOut, Set<Turn> turnList, Address addressReference) {
         this.DNI = DNI;
         this.name = name;
         this.lastName = lastName;
@@ -34,11 +34,11 @@ public class Patient {
         this.addressReference = addressReference;
     }
 
-    public long getDNI() {
+    public Long getDNI() {
         return DNI;
     }
 
-    public void setDNI(long DNI) {
+    public void setDNI(Long DNI) {
         this.DNI = DNI;
     }
 

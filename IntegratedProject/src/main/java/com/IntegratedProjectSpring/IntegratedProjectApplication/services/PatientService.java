@@ -9,6 +9,10 @@ import java.util.List;
 public interface PatientService {
 
     Patient create(Patient patient);
-    Patient search(long id);
+    Patient search(Long DNI);
     List<Patient> searchAll();
+
+    Patient update(Patient patient);
+
+    void delete(Long id);
 }

@@ -1,6 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.DentistRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,20 @@ public class DentistServiceImpl implements DentistService {
     }
 
     @Override
-    public Dentist search(int id) {
-        return null;
+    public Dentist search(Integer id) {
+        return dentistRepository.findById(id).get();
     }
 
     @Override
     public List<Dentist> searchAll() {
-        return null;
+        return dentistRepository.findAll();
     }
 
-    @Override
+    public void delete(Integer id) {
+        dentistRepository.deleteById(id);
+    }
+
     public Dentist update(Dentist dentist) {
-        return null;
+        return dentistRepository.save(dentist);
     }
 }

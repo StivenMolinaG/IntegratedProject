@@ -1,6 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.AddressService;
@@ -14,9 +15,6 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
 
-    @Autowired
-    private PatientRepository patientRepository;
-
     @Override
     public Address create(Address address) {
         addressRepository.save(address);
@@ -25,11 +23,19 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address search(Integer id) {
-        return null;
+        return addressRepository.findById(id).get();
     }
 
     @Override
     public List<Address> searchAll() {
-        return null;
+        return addressRepository.findAll();
+    }
+
+    public void delete(Integer id) {
+        addressRepository.deleteById(id);
+    }
+
+    public Address update(Address address) {
+        return addressRepository.save(address);
     }
 }

@@ -1,7 +1,10 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,20 +24,42 @@ public class DentistController {
     }
 
     @PostMapping("/create")
-    public Dentist createDentistHandler(@RequestBody Dentist dentist){
+    public Dentist createDentistsHandler(@RequestBody Dentist dentist){
+        dentistService.create(dentist);
         return dentist;
     }
-
     @GetMapping("/search")
-    public Dentist searchDentistHandler(int id){
-        return null;
+    public ResponseEntity<Dentist> searchDentistHandler(Integer id) {
+        Dentist dentistResponse = dentistService.search(id);
+        return ResponseEntity.ok(dentistResponse);
     }
     @GetMapping("/searchAll")
-    public List<Dentist> searchAllDentistHandler(){
-        return null;
+    public ResponseEntity<List<Dentist>> searchAllDentistHandler(){
+        return ResponseEntity.ok(dentistService.searchAll());
     }
-    @PostMapping("/update")
-    public Dentist updateDentistHandler(@RequestBody Dentist dentist){
-        return null;
+
+    @PutMapping("/update")
+    public ResponseEntity<Dentist> updatePatientHandler(@RequestBody Dentist dentist){
+        ResponseEntity<Dentist> response = null;
+
+        if(dentist.getId() != null && dentistService.search(dentist.getId()) != null){
+            response = ResponseEntity.ok(dentistService.update(dentist));
+        }else {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deletePatientHandler(Integer id){
+        ResponseEntity<String> response = null;
+
+        if(dentistService.search(id)!= null){
+            dentistService.delete(id);
+            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Patient successfully deleted");
+        }else {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
     }
 }

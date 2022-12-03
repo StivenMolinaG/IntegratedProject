@@ -28,13 +28,21 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient search(long id) {
-        return null;
+    public Patient search(Long DNI) {
+        return patientRepository.findPatientByDNI(DNI);
     }
 
     @Override
     public List<Patient> searchAll() {
-        return null;
+        return patientRepository.findAll();
+    }
+
+    public void delete(Long DNI) {
+        patientRepository.deleteById(DNI);
+    }
+
+    public Patient update(Patient patient) {
+        return patientRepository.save(patient);
     }
 
 }

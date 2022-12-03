@@ -10,7 +10,9 @@ public interface DentistService {
 
     Dentist create(Dentist dentist);
 
-    Dentist search(int id);
+    Dentist search(Integer id);
     List<Dentist> searchAll();
     Dentist update(Dentist dentist);
+
+    void delete(Integer id);
 }
