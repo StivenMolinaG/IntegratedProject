@@ -13,7 +13,9 @@ public class Patient {
     // como campo de búsqueda si querés. Podrías usar el dni como id, pero requeire de otra estrategia
     // que no vamos a ver
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     @Column(name = "dni_patient")
     private long DNI;
     private String name;
@@ -39,6 +41,23 @@ public class Patient {
         //this.dateOut = dateOut;
         //this.turnList = turnList;
         this.addressReference = addressReference;
+    }
+
+    public Patient(Integer id, long DNI, String name, String lastName,
+                   Address addressReference) {
+        this.id = id;
+        this.DNI = DNI;
+        this.name = name;
+        this.lastName = lastName;
+        this.addressReference = addressReference;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public long getDNI() {
