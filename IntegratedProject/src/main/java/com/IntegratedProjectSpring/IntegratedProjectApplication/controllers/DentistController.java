@@ -56,7 +56,7 @@ public class DentistController {
 
         if(dentistService.search(id)!= null){
             dentistService.delete(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Patient successfully deleted");
+            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Dentist successfully deleted");
         }else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
