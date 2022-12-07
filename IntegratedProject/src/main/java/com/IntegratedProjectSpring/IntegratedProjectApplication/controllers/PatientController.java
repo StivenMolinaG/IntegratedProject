@@ -52,7 +52,7 @@ public class PatientController {
 
         if(patientService.search(id)!= null){
             patientService.delete(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Patient successfully deleted");
+            response = ResponseEntity.status(HttpStatus.ACCEPTED).body("Patient successfully deleted");
         }else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

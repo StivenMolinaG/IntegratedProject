@@ -1,7 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.TurnDto;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
+
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Turn;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.TurnRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.TurnService;
@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class TurnServiceImpl implements TurnService {
 
     @Override
     public Turn create(Turn turn) {
+        turn.setDateTime(new Date());
         turnRepository.save(turn);
         return turn;
     }

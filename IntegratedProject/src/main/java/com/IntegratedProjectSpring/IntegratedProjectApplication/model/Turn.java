@@ -11,6 +11,7 @@ public class Turn {
 
     @Id
     @Column(name = "id_turn")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Date dateTime;
 
@@ -48,20 +49,19 @@ public class Turn {
         this.dateTime = dateTime;
     }
 
-    public Patient getPatientList() {
-        return patient;
-    }
-
-    public void setPatientList(Patient patient) {
-        this.patient = patient;
-    }
-
-    public Dentist getDentistList() {
+    public Dentist getDentist() {
         return dentist;
     }
 
-    public void setDentistList(Dentist dentist) {
+    public void setDentist(Dentist dentist) {
         this.dentist = dentist;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }

@@ -12,6 +12,7 @@ import java.util.Date;
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PatientDto {
+    private Integer id;
     private Long DNI;
     private String name;
     private String lastName;
