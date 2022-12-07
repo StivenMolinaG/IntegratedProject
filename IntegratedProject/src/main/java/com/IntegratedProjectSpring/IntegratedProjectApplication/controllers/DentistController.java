@@ -1,5 +1,6 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.DentistDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/dentist")
@@ -34,7 +36,7 @@ public class DentistController {
         return ResponseEntity.ok(dentistResponse);
     }
     @GetMapping("/searchAll")
-    public ResponseEntity<List<Dentist>> searchAllDentistHandler(){
+    public ResponseEntity<Set<DentistDto>> searchAllDentistHandler(){
         return ResponseEntity.ok(dentistService.searchAll());
     }
 

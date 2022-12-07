@@ -1,19 +1,26 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.DentistDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.DentistRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class DentistServiceImpl implements DentistService {
 
     @Autowired
     private DentistRepository dentistRepository;
+
+    @Autowired
+    ObjectMapper mapper;
 
     @Override
     public Dentist create(Dentist dentist) {
@@ -27,8 +34,14 @@ public class DentistServiceImpl implements DentistService {
     }
 
     @Override
-    public List<Dentist> searchAll() {
-        return dentistRepository.findAll();
+    public Set<DentistDto> searchAll() {
+        List<Dentist> dentists = dentistRepository.findAll();
+        Set<DentistDto> dentistsDto = new HashSet<>();
+        for (Dentist dentist : dentists) {
+            DentistDto dentistDto = mapper.convertValue(dentist, DentistDto.class);
+            dentistsDto.add(dentistDto);
+        }
+        return dentistsDto;
     }
 
     public void delete(Integer id) {

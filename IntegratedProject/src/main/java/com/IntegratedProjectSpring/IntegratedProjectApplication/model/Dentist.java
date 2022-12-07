@@ -9,25 +9,23 @@ import java.util.Set;
 public class Dentist {
 
     @Id
-    @Column(name = "id_dentist")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private String lastName;
     private String enrollment;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_turn")
-    private Set<Turn> turnList = new HashSet<>();
-
+    @OneToOne(mappedBy = "dentist")
+    private Turn turn;
     public Dentist() {
     }
 
-    public Dentist(Integer id, String name, String lastName, String enrollment, Set<Turn> turnList) {
+    public Dentist(Integer id, String name, String lastName, String enrollment, Turn turn) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.enrollment = enrollment;
-        this.turnList = turnList;
+        this.turn = turn;
     }
 
     public Integer getId() {
@@ -62,11 +60,11 @@ public class Dentist {
         this.enrollment = enrollment;
     }
 
-    public Set<Turn> getTurnList() {
-        return turnList;
+    public Turn getTurnList() {
+        return turn;
     }
 
-    public void setTurnList(Set<Turn> turnList) {
-        this.turnList = turnList;
+    public void setTurnList(Turn turn) {
+        this.turn = turn;
     }
 }

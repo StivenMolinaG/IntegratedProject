@@ -1,14 +1,19 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.PatientDto;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -19,30 +24,49 @@ public class PatientServiceImpl implements PatientService {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    ObjectMapper mapper;
+
     @Override
     public Patient create(Patient patient) {
+        Address address = patient.getAddressReference();
+        addressRepository.save(address);
         patient.setDateOut(new Date());
-        System.out.println("Address" + patient.getAddressReference());
         patientRepository.save(patient);
         return patient;
     }
 
     @Override
-    public Patient search(Long DNI) {
-        return patientRepository.findPatientByDNI(DNI);
+    public Patient search(Integer id) {
+        return patientRepository.findPatientById(id);
     }
 
     @Override
-    public List<Patient> searchAll() {
-        return patientRepository.findAll();
+    public Set<PatientDto> searchAll() {
+        List<Patient> patients = patientRepository.findAll();
+        Set<PatientDto> patientsDTO = new HashSet<>();
+        for (Patient patient : patients) {
+            PatientDto patientDTO = mapper.convertValue(patient, PatientDto.class);
+            patientsDTO.add(patientDTO);
+        }
+        return patientsDTO;
     }
 
-    public void delete(Long DNI) {
-        patientRepository.deleteById(DNI);
+    public void delete(Integer id) {
+        patientRepository.deleteById(id);
     }
 
     public Patient update(Patient patient) {
         return patientRepository.save(patient);
+    }
+
+    Patient createPatientObject(Patient patient) {
+        Patient patientObject = new Patient();
+        patientObject.setDNI(patient.getDNI());
+        patientObject.setName(patient.getName());
+        patientObject.setLastName(patient.getLastName());
+        patientObject.setDateOut(patient.getDateOut());
+        return patientObject;
     }
 
 }

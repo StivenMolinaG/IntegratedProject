@@ -9,29 +9,56 @@ import java.util.Set;
 public class Patient {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     @Column(name = "dni_patient")
     private Long DNI;
     private String name;
     private String lastName;
     private Date dateOut;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_turn")
-    private Set<Turn> turnList = new HashSet<>();
 
     @OneToOne(mappedBy = "patient")
+    private Turn turn;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address addressReference;
 
     public Patient() {
     }
 
-    public Patient(Long DNI, String name, String lastName, Date dateOut, Set<Turn> turnList, Address addressReference) {
+    public Patient(Long DNI, String name, String lastName, Date dateOut, Address addressReference) {
         this.DNI = DNI;
         this.name = name;
         this.lastName = lastName;
         this.dateOut = dateOut;
-        this.turnList = turnList;
+        //this.turnList = turnList;
         this.addressReference = addressReference;
+    }
+
+    public Patient(Long DNI, String name, String lastName, Date dateOut) {
+        this.DNI = DNI;
+        this.name = name;
+        this.lastName = lastName;
+        this.dateOut = dateOut;
+    }
+
+    public Patient(Integer id, Long DNI, String name, String lastName, Address addressReference) {
+        this.id = id;
+        this.DNI = DNI;
+        this.name = name;
+        this.lastName = lastName;
+        this.addressReference = addressReference;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Long getDNI() {
@@ -65,7 +92,7 @@ public class Patient {
     public void setDateOut(Date dateOut) {
         this.dateOut = dateOut;
     }
-
+/*
     public Set<Turn> getTurnList() {
         return turnList;
     }
@@ -73,7 +100,7 @@ public class Patient {
     public void setTurnList(Set<Turn> turnList) {
         this.turnList = turnList;
     }
-
+*/
     public Address getAddressReference() {
         return addressReference;
     }

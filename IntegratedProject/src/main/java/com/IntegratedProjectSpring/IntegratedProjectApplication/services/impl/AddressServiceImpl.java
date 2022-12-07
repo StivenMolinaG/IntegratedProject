@@ -1,19 +1,26 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.AddressDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.AddressService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    ObjectMapper mapper;
 
     @Override
     public Address create(Address address) {
@@ -27,8 +34,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<Address> searchAll() {
-        return addressRepository.findAll();
+    public Set<AddressDto> searchAll() {
+        List<Address> addressList = addressRepository.findAll();
+        Set<AddressDto> addressDtos = new HashSet<>();
+        for (Address address : addressList) {
+            AddressDto addressDto = mapper.convertValue(address, AddressDto.class);
+            addressDtos.add(addressDto);
+        }
+        return addressDtos;
     }
 
     public void delete(Integer id) {

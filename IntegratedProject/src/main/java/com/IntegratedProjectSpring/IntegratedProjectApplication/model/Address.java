@@ -7,15 +7,14 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String street;
     private String number;
     private String location;
     private String province;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(referencedColumnName = "dni_patient")
+    @OneToOne(mappedBy = "addressReference")
     private Patient patient;
     public Address() {
     }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TurnRepository extends JpaRepository<Turn, Integer> {
+    Turn findTurnById(Integer id);
 }

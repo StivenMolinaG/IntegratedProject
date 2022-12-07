@@ -14,14 +14,14 @@ public class Turn {
     private Integer id;
     private Date dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "dni_patient")
-    private Patient patient;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_dentist")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dentist_id", referencedColumnName = "id")
     private Dentist dentist;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", referencedColumnName = "id")
+    private Patient patient;
     public Turn() {
     }
 
@@ -63,4 +63,5 @@ public class Turn {
     public void setDentistList(Dentist dentist) {
         this.dentist = dentist;
     }
+
 }

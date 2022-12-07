@@ -1,14 +1,19 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.services;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.TurnDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Turn;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public interface TurnService {
 
     Turn create(Turn patient);
     Turn search(Integer id);
-    List<Turn> searchAll();
+    Set<TurnDto> searchAll();
+
+    void delete(Integer id);
+    Turn update(Turn turn);
 }

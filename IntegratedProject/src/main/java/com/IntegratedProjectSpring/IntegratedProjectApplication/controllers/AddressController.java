@@ -1,5 +1,6 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.AddressDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/address")
@@ -33,8 +35,15 @@ public class AddressController {
         return ResponseEntity.ok(addressResponse);
     }
     @GetMapping("/searchAll")
-    public ResponseEntity<List<Address>> searchAllAddressHandler(){
-        return ResponseEntity.ok(addressService.searchAll());
+    public ResponseEntity<Set<AddressDto>> searchAllAddressHandler(){
+        ResponseEntity<Set<AddressDto>> response;
+        Set<AddressDto> addressDtos = addressService.searchAll();
+        if(addressDtos!= null && addressDtos.size() > 0){
+            response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            response = ResponseEntity.ok(addressDtos);
+        }
+        return response;
     }
 
     @PutMapping("/update")
