@@ -7,6 +7,7 @@ import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.Add
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.Set;
 
 @Service
 public class PatientServiceImpl implements PatientService {
+    private static final Logger logger = Logger.getLogger(PatientServiceImpl.class);
 
     @Autowired
     private PatientRepository patientRepository;
@@ -31,7 +33,9 @@ public class PatientServiceImpl implements PatientService {
     public Patient create(Patient patient) {
         Address address = patient.getAddressReference();
         addressRepository.save(address);
+        logger.info("Created address for patient successfully");
         patientRepository.save(patient);
+        logger.info("created patient successfully");
         return patient;
     }
 
@@ -53,9 +57,11 @@ public class PatientServiceImpl implements PatientService {
 
     public void delete(Integer id) {
         patientRepository.deleteById(id);
+        logger.warn("deleted patient successfully");
     }
 
     public Patient update(Patient patient) {
+        logger.warn("deleted patient successfully");
         return patientRepository.save(patient);
     }
 

@@ -2,11 +2,10 @@ package com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.AddressDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Address;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.AddressRepository;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.PatientRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.AddressService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +15,8 @@ import java.util.Set;
 
 @Service
 public class AddressServiceImpl implements AddressService {
+
+    private static final Logger logger = Logger.getLogger(AddressServiceImpl.class);
     @Autowired
     private AddressRepository addressRepository;
 
@@ -25,12 +26,14 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address create(Address address) {
         addressRepository.save(address);
+        logger.info("Created address successfully");
         return address;
     }
 
     @Override
     public Address search(Integer id) {
-        return addressRepository.findById(id).get();
+        Address address = addressRepository.findAddressById(id);
+        return address;
     }
 
     @Override
@@ -46,9 +49,11 @@ public class AddressServiceImpl implements AddressService {
 
     public void delete(Integer id) {
         addressRepository.deleteById(id);
+        logger.warn("Deleted address successfully");
     }
 
     public Address update(Address address) {
+        logger.warn("Updating address successfully");
         return addressRepository.save(address);
     }
 }

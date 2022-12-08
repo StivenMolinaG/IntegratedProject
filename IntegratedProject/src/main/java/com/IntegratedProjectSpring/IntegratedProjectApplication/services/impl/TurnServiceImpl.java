@@ -6,6 +6,7 @@ import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Turn;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.TurnRepository;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.TurnService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 
 @Service
 public class TurnServiceImpl implements TurnService {
+    private static final Logger logger = Logger.getLogger(TurnServiceImpl.class);
 
     @Autowired
     private TurnRepository turnRepository;
@@ -27,6 +29,7 @@ public class TurnServiceImpl implements TurnService {
     public Turn create(Turn turn) {
         turn.setDateTime(new Date());
         turnRepository.save(turn);
+        logger.info("Created Turn successfully");
         return turn;
     }
 
@@ -48,9 +51,11 @@ public class TurnServiceImpl implements TurnService {
 
     public void delete(Integer id) {
         turnRepository.deleteById(id);
+        logger.warn("Deleted Turn successfully");
     }
 
     public Turn update(Turn turn) {
+        logger.warn("Updated Turn successfully");
         return turnRepository.save(turn);
     }
 }

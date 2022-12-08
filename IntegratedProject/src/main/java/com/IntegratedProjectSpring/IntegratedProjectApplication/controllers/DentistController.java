@@ -2,18 +2,18 @@ package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.DentistDto;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Dentist;
-import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.DentistService;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/dentist")
 public class DentistController {
+
+    private static final Logger logger = Logger.getLogger(DentistController.class);
     private final DentistService dentistService;
 
     public DentistController(DentistService dentistService) {
@@ -33,11 +33,28 @@ public class DentistController {
     @GetMapping("/search")
     public ResponseEntity<Dentist> searchDentistHandler(Integer id) {
         Dentist dentistResponse = dentistService.search(id);
-        return ResponseEntity.ok(dentistResponse);
+        ResponseEntity response;
+        if(dentistResponse != null){
+            logger.info("Dentist founded correctly");
+            response = ResponseEntity.ok(dentistResponse);
+        }else {
+            logger.error("Dentist not found");
+            response = new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return response;
     }
     @GetMapping("/searchAll")
     public ResponseEntity<Set<DentistDto>> searchAllDentistHandler(){
-        return ResponseEntity.ok(dentistService.searchAll());
+        ResponseEntity<Set<DentistDto>> response;
+        Set<DentistDto> dentistDtoSet = dentistService.searchAll();
+        if(dentistDtoSet.isEmpty()){
+            logger.error("Dentist not found");
+            response = new ResponseEntity(HttpStatus.NO_CONTENT);
+        }else {
+            logger.info("Dentist founded correctly");
+            response = ResponseEntity.ok(dentistDtoSet);
+        }
+        return response;
     }
 
     @PutMapping("/update")
@@ -45,8 +62,10 @@ public class DentistController {
         ResponseEntity<Dentist> response = null;
 
         if(dentist.getId() != null && dentistService.search(dentist.getId()) != null){
+            logger.info("Dentist has id and founded in DataBase to update");
             response = ResponseEntity.ok(dentistService.update(dentist));
         }else {
+            logger.error("Dentist not founded in DataBase to update");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return response;
@@ -57,9 +76,11 @@ public class DentistController {
         ResponseEntity<String> response = null;
 
         if(dentistService.search(id)!= null){
+            logger.info("Dentist has id and founded in DataBase to delete");
             dentistService.delete(id);
             response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Dentist successfully deleted");
         }else {
+            logger.info("Dentist not founded in DataBase to delete");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         return response;
