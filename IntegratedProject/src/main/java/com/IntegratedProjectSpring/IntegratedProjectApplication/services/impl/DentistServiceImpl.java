@@ -33,7 +33,7 @@ public class DentistServiceImpl implements DentistService {
 
     @Override
     public Dentist search(Integer id) {
-        return dentistRepository.findById(id).get();
+        return dentistRepository.findDentistById(id);
     }
 
     @Override
