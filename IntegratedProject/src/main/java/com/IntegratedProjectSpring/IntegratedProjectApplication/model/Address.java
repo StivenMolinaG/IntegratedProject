@@ -1,5 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,18 +16,16 @@ public class Address {
     private String location;
     private String province;
 
-    @OneToOne(mappedBy = "addressReference")
-    private Patient patient;
+
     public Address() {
     }
 
-    public Address(Integer id, String street, String number, String location, String province, Patient patient) {
+    public Address(Integer id, String street, String number, String location, String province) {
         this.id = id;
         this.street = street;
         this.number = number;
         this.location = location;
         this.province = province;
-        this.patient = patient;
     }
 
     public Integer getId() {
@@ -68,11 +68,4 @@ public class Address {
         this.province = province;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 }

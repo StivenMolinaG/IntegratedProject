@@ -15,17 +15,14 @@ public class Dentist {
     private String lastName;
     private String enrollment;
 
-    @OneToOne(mappedBy = "dentist")
-    private Turn turn;
     public Dentist() {
     }
 
-    public Dentist(Integer id, String name, String lastName, String enrollment, Turn turn) {
+    public Dentist(Integer id, String name, String lastName, String enrollment) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.enrollment = enrollment;
-        this.turn = turn;
     }
 
     public Integer getId() {
@@ -58,13 +55,5 @@ public class Dentist {
 
     public void setEnrollment(String enrollment) {
         this.enrollment = enrollment;
-    }
-
-    public Turn getTurnList() {
-        return turn;
-    }
-
-    public void setTurnList(Turn turn) {
-        this.turn = turn;
     }
 }

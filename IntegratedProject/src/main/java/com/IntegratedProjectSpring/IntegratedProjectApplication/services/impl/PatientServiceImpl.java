@@ -43,7 +43,6 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Set<PatientDto> searchAll() {
         List<Patient> patients = patientRepository.findAll();
-        System.out.println("PATIENT LIST: " + patients);
         Set<PatientDto> patientsDTO = new HashSet<>();
         for (Patient patient : patients) {
             PatientDto patientDTO = mapper.convertValue(patient, PatientDto.class);
@@ -58,15 +57,6 @@ public class PatientServiceImpl implements PatientService {
 
     public Patient update(Patient patient) {
         return patientRepository.save(patient);
-    }
-
-    Patient createPatientObject(Patient patient) {
-        Patient patientObject = new Patient();
-        patientObject.setDNI(patient.getDNI());
-        patientObject.setName(patient.getName());
-        patientObject.setLastName(patient.getLastName());
-        patientObject.setDateOut(patient.getDateOut());
-        return patientObject;
     }
 
 }

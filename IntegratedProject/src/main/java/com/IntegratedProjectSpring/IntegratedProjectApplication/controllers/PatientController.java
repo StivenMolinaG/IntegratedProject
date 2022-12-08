@@ -26,12 +26,28 @@ public class PatientController {
        return patient;
     }
     @GetMapping("/search/{id}")
-    public Patient searchPatientHandler(@PathVariable Integer id) {
-        return patientService.search(id);
+    public ResponseEntity<Patient> searchPatientHandler(@PathVariable Integer id) {
+        Patient patient = patientService.search(id);
+        ResponseEntity response;
+        if(patient!= null){
+            response = ResponseEntity.ok(patient);
+        }else{
+            response = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return response;
     }
     @GetMapping("/searchAll")
     public ResponseEntity<Set<PatientDto>> searchAllPatientHandler(){
-       return ResponseEntity.ok(patientService.searchAll());
+        ResponseEntity<Set<PatientDto>> response;
+        Set<PatientDto> patientsDtos = patientService.searchAll();
+
+        if(patientsDtos.isEmpty()){
+            response= new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else{
+            response= ResponseEntity.ok(patientsDtos);
+        }
+
+        return response;
     }
 
     @PutMapping("/update")

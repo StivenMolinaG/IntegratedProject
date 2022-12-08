@@ -17,11 +17,6 @@ public class Patient {
     private String lastName;
     private Date dateOut;
 
-
-    @OneToOne(mappedBy = "patient")
-    private Turn turn;
-
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address addressReference;
@@ -34,7 +29,6 @@ public class Patient {
         this.name = name;
         this.lastName = lastName;
         this.dateOut = dateOut;
-        //this.turnList = turnList;
         this.addressReference = addressReference;
     }
 
@@ -92,15 +86,7 @@ public class Patient {
     public void setDateOut(Date dateOut) {
         this.dateOut = dateOut;
     }
-/*
-    public Set<Turn> getTurnList() {
-        return turnList;
-    }
 
-    public void setTurnList(Set<Turn> turnList) {
-        this.turnList = turnList;
-    }
-*/
     public Address getAddressReference() {
         return addressReference;
     }

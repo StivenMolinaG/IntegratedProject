@@ -32,13 +32,19 @@ public class AddressController {
     @GetMapping("/search")
     public ResponseEntity<Address> searchAddressHandler(Integer id) {
         Address addressResponse = addressService.search(id);
-        return ResponseEntity.ok(addressResponse);
+        ResponseEntity response;
+        if(addressResponse!= null){
+            response = ResponseEntity.ok(addressResponse);
+        }else{
+            response = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return response;
     }
     @GetMapping("/searchAll")
     public ResponseEntity<Set<AddressDto>> searchAllAddressHandler(){
         ResponseEntity<Set<AddressDto>> response;
         Set<AddressDto> addressDtos = addressService.searchAll();
-        if(addressDtos!= null && addressDtos.size() > 0){
+        if(addressDtos.isEmpty()){
             response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }else{
             response = ResponseEntity.ok(addressDtos);
@@ -64,7 +70,7 @@ public class AddressController {
 
         if(addressService.search(id)!= null){
             addressService.delete(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Address successfully deleted");
+            response = ResponseEntity.status(HttpStatus.ACCEPTED).body("Address successfully deleted");
         }else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
