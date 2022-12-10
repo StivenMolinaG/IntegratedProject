@@ -1,27 +1,2 @@
-[2022-12-08 17:06:53,544] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:09:27,467] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:10:43,032] http-nio-8090-exec-1 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:10:43,721] http-nio-8090-exec-3 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:10:46,499] http-nio-8090-exec-4 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 50 INFO  - Address is not null in searchAll
-[2022-12-08 17:10:56,734] http-nio-8090-exec-7 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 34 INFO  - Address is not null in search
-[2022-12-08 17:11:06,046] http-nio-8090-exec-8 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 75 INFO  - Address founded to delete successfully
-[2022-12-08 17:11:06,081] http-nio-8090-exec-8 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 51 WARN  - Deleted address successfully
-[2022-12-08 17:11:12,013] http-nio-8090-exec-9 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 61 INFO  - Address has id and founded in DataBase to update
-[2022-12-08 17:11:12,014] http-nio-8090-exec-9 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 55 WARN  - Updating address successfully
-[2022-12-08 17:15:12,884] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:15:30,099] http-nio-8090-exec-4 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:15:31,318] http-nio-8090-exec-3 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:15:39,533] http-nio-8090-exec-5 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 51 INFO  - Address is not null in searchAll
-[2022-12-08 17:15:42,591] http-nio-8090-exec-6 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 35 INFO  - Address is not null in search
-[2022-12-08 17:17:12,696] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:17:22,329] http-nio-8090-exec-3 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:18:31,808] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:18:52,082] http-nio-8090-exec-2 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:19:11,753] http-nio-8090-exec-6 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 35 INFO  - Address is not null in search
-[2022-12-08 17:19:36,590] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:19:48,354] http-nio-8090-exec-2 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 29 INFO  - Created address successfully
-[2022-12-08 17:19:55,300] http-nio-8090-exec-3 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 36 INFO  - Address is not null in search
-[2022-12-08 17:25:48,867] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-08 17:26:03,411] http-nio-8090-exec-2 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.AddressServiceImpl 32 INFO  - Created address successfully
-[2022-12-08 17:26:08,257] http-nio-8090-exec-3 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 39 ERROR - Address not found in search
-[2022-12-08 17:26:48,596] http-nio-8090-exec-4 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.AddressController 36 INFO  - Address is not null in search
+[2022-12-10 12:34:28,594] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-10 12:35:34,478] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
