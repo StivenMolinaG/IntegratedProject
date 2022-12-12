@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataLoader implements ApplicationRunner {
     private final UserRepository userRepository;
 
@@ -21,17 +23,17 @@ public class DataLoader implements ApplicationRunner {
         AppUser user = new AppUser();
         AppUser userAdmin = new AppUser();
         String hashedPassword = passwordEncoder.encode("password");
-        user.setName("Apolo");
-        user.setUsername("apolo");
+        user.setName("Alpha");
+        user.setUsername("alpha");
         user.setPassword(hashedPassword);
-        user.setEmail("dh@dh.com");
+        user.setEmail("alpha@alpha.com");
         user.setRole(AppUserRole.USER);
 
 
-        userAdmin.setName("Nina");
-        userAdmin.setUsername("nina");
+        userAdmin.setName("Stiven");
+        userAdmin.setUsername("stmolinag");
         userAdmin.setPassword(hashedPassword);
-        userAdmin.setEmail("dh@dh.com");
+        userAdmin.setEmail("stmolinag@gmail.com");
         userAdmin.setRole(AppUserRole.ADMIN);
 
         userRepository.save(user);

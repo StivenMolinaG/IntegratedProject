@@ -24,3 +24,17 @@
 [2022-12-12 08:02:05,605] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
 [2022-12-12 08:02:05,621] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
 [2022-12-12 08:06:09,869] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.DentistServiceImpl 30 INFO  - Created dentist successfully
+[2022-12-12 15:42:42,821] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.DentistServiceImpl 30 INFO  - Created dentist successfully
+[2022-12-12 15:43:06,153] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 15:48:45,828] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.DentistServiceImpl 30 INFO  - Created dentist successfully
+[2022-12-12 15:50:38,749] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 15:50:38,764] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 15:52:52,645] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 16:06:25,136] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 16:07:49,540] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 16:34:23,899] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 16:38:07,138] http-nio-8090-exec-6 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 16:38:07,149] http-nio-8090-exec-6 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 16:40:11,667] http-nio-8090-exec-4 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 16:40:11,672] http-nio-8090-exec-4 com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 16:40:31,943] http-nio-8090-exec-8 com.IntegratedProjectSpring.IntegratedProjectApplication.controllers.PatientController 54 INFO  - Patient founded correctly

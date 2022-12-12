@@ -23,13 +23,6 @@ public class DentistTest {
     }
     @Test
     public void testCreateDentist() {
-        Address address = new Address();
-        address.setStreet("Carrera 30");
-        address.setProvince("Antioquia");
-        address.setLocation("Envigado");
-        address.setNumber("40");
-        address.setId(12345678);
-
         Dentist dentist = new Dentist();
 
         dentist.setId(1);
@@ -44,4 +37,22 @@ public class DentistTest {
         System.out.println(dentistResponse);
         assertNotNull(dentistResponse);
     }
+
+    @Test
+    public void testSearchDentist(){
+        Dentist dentist = new Dentist();
+
+        dentist.setId(1);
+        dentist.setName("Juan Esteban");
+        dentist.setLastName("Restrepo Uribe");
+        dentist.setEnrollment("12345");
+
+        dentistService.create(dentist);
+
+        Dentist dentistResponse = dentistService.search(1);
+
+        System.out.println(dentistResponse);
+        assertNotNull(dentistResponse);
+    }
+
 }
