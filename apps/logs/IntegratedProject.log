@@ -1,2 +1,26 @@
-[2022-12-10 12:34:28,594] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
-[2022-12-10 12:35:34,478] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 07:14:53,461] main com.IntegratedProjectSpring.IntegratedProjectApplication.IntegratedProjectApplication 11 INFO  - IntegratedProjectApplication starting
+[2022-12-12 07:34:25,885] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:35:52,980] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:37:34,170] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:40:00,756] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:40:27,232] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:45:51,926] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:45:51,938] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:46:34,416] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:46:34,431] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:47:43,033] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:47:43,049] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:49:45,387] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:49:45,400] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:50:02,078] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:50:02,091] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:50:23,813] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:59:14,497] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:59:14,511] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 07:59:53,661] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 07:59:53,677] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 08:00:20,432] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 08:00:20,444] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 08:02:05,605] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 36 INFO  - Created address for patient successfully
+[2022-12-12 08:02:05,621] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.PatientServiceImpl 38 INFO  - created patient successfully
+[2022-12-12 08:06:09,869] main com.IntegratedProjectSpring.IntegratedProjectApplication.services.impl.DentistServiceImpl 30 INFO  - Created dentist successfully

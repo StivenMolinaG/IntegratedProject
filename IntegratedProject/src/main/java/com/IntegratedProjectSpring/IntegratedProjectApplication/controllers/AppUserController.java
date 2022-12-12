@@ -1,8 +1,10 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.AppUserDto;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.AppUser;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.security.AppUserService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -14,16 +16,18 @@ public class AppUserController {
         this.userService = userService;
     }
 
-    /*@PostMapping
-    public ResponseEntity<AppUserDto> createUser(@RequestBody User user) {
-        AppUserDto savedUser = userService.save(user);
+    @PostMapping("/create")
+    public ResponseEntity<AppUser> createUser(@RequestBody AppUser user) {
+        AppUser savedUser = userService.create(user);
         return ResponseEntity.ok().body(savedUser);
     }
+
     @GetMapping("/{username}")
     public ResponseEntity<AppUserDto> getByUsername(@PathVariable String username) {
-        AppUserDto user = userService.getByUsername(username);
+        AppUserDto user = userService.getUserbyUsername(username);
         return ResponseEntity.ok().body(user);
     }
+    /*
     @GetMapping
     public ResponseEntity<Set<AppUserDto>> getAll() {
         Set<AppUserDto> userDtos = userService.getAll();

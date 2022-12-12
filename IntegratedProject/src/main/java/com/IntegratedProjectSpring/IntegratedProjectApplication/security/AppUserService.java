@@ -1,5 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.security;
 
+import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.AppUserDto;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.model.AppUser;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,8 +18,16 @@ public class AppUserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    public AppUser create(AppUser user){
+        return userRepository.save(user);
+    }
+
+    public AppUserDto getUserbyUsername(String username){
+        return userRepository.findByUsername(username);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
+        return null;
     }
 }

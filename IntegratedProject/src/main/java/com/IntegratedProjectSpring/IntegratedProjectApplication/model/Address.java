@@ -28,6 +28,13 @@ public class Address {
         this.province = province;
     }
 
+    public Address(String street, String number, String location, String province) {
+        this.street = street;
+        this.number = number;
+        this.location = location;
+        this.province = province;
+    }
+
     public Integer getId() {
         return id;
     }

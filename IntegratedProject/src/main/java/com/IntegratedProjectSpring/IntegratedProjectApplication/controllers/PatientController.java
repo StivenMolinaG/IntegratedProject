@@ -1,6 +1,7 @@
 package com.IntegratedProjectSpring.IntegratedProjectApplication.controllers;
 
 import com.IntegratedProjectSpring.IntegratedProjectApplication.dtos.PatientDto;
+import com.IntegratedProjectSpring.IntegratedProjectApplication.exceptions.ResourceNotFoundException;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.model.Patient;
 import com.IntegratedProjectSpring.IntegratedProjectApplication.services.PatientService;
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class PatientController {
        return patient;
     }
     @GetMapping("/search/{id}")
-    public ResponseEntity<Patient> searchPatientHandler(@PathVariable Integer id) {
+    public ResponseEntity<Patient> searchPatientHandler(@PathVariable Integer id) throws ResourceNotFoundException {
         Patient patient = patientService.search(id);
         ResponseEntity response;
         if(patient!= null){
@@ -37,16 +38,18 @@ public class PatientController {
         }else{
             logger.error("Patient not found");
             response = new ResponseEntity(HttpStatus.NOT_FOUND);
+            throw new ResourceNotFoundException("Not Exists any Patient with Id: " + id);
         }
         return response;
     }
     @GetMapping("/searchAll")
-    public ResponseEntity<Set<PatientDto>> searchAllPatientHandler(){
+    public ResponseEntity<Set<PatientDto>> searchAllPatientHandler() throws ResourceNotFoundException {
         ResponseEntity<Set<PatientDto>> response;
         Set<PatientDto> patientsDtos = patientService.searchAll();
         if(patientsDtos.isEmpty()){
             logger.error("Patient not found");
             response= new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            throw new ResourceNotFoundException("Not Exists any Patient");
         }else{
             logger.info("Patient founded correctly");
             response= ResponseEntity.ok(patientsDtos);
@@ -56,7 +59,7 @@ public class PatientController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Patient> updatePatientHandler(@RequestBody Patient patient){
+    public ResponseEntity<Patient> updatePatientHandler(@RequestBody Patient patient) throws ResourceNotFoundException {
         ResponseEntity<Patient> response = null;
 
         if(patient.getDNI() != null && patientService.search(patient.getId()) != null){
@@ -65,12 +68,13 @@ public class PatientController {
         }else {
             logger.error("Patient not found");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new ResourceNotFoundException("Not Exists any Patient with Id: " + patient.getId());
         }
         return response;
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletePatientHandler(@PathVariable Integer id){
+    public ResponseEntity<String> deletePatientHandler(@PathVariable Integer id) throws ResourceNotFoundException {
         ResponseEntity<String> response = null;
 
         if(patientService.search(id)!= null){
@@ -80,6 +84,7 @@ public class PatientController {
         }else {
             logger.error("Patient not found");
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new ResourceNotFoundException("Not Exists any Patient with Id: " + id);
         }
             return response;
     }
